@@ -30,7 +30,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   }
   h2 {
     font-size: 3rem;
-    margin:100px 0;
+    margin:100px 0 0 0;
     
   }
   h4{
@@ -61,6 +61,9 @@ nav {
   position: fixed;
   z-index: 999;
 
+}
+nav:hover {
+  background: #3c3c3c;
 }
 nav p {
   position:absolute;
@@ -95,6 +98,9 @@ nav p {
 .item-nav a {
     text-decoration: none;
     color: var(--primary-color);
+}
+.item-nav a:hover {
+  color:#1c1c1c
 }
 .btn-toggle-container {
     position: absolute;
@@ -161,7 +167,7 @@ nav p {
 }
 
 /* Responsive Nav*/
-@media screen and (max-width:880px){
+@media screen and (max-width:1045px){
 
     .btn-toggle-container {
         display: block;
@@ -196,8 +202,97 @@ section {
 p {
   color:var(--primary-color)
 }
+/* ----- Section Accueil ----- */
+.accueil>p {
+  margin-bottom: 40px;
+}
+/* Carrousel-Accueil */
+.carousel-container-accueil {
+  position: relative;
+  width: 1050px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+.carousel-accueil {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
 
-/* ----- Services Section ----- */
+/* Slide de chaque image */
+.carousel-slide-acc {
+  min-width: 100%;
+  text-align: center;
+  background-color: #fff;
+}
+
+.carousel-slide-acc img {
+  width: 100%;
+  height: auto;
+  max-height: 500px; 
+    object-fit: cover;
+  border-bottom: 2px solid #ddd;
+}
+
+.carousel-slide-acc p {
+  padding: 10px;
+  background-color: var(--heavygrey);
+  color: var(--primary-color);
+}
+
+
+/* Points de navigation */
+.dots-acc {
+  text-align: center;
+  padding: 10px;
+  background-color: var(--heavygrey);
+}
+
+.dot-acc {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot-acc.active {
+  background-color: #717171;
+}
+
+@media (max-width: 768px) {
+  .carousel-container-accueil {
+      width: 100%; 
+      margin: 0 10px; 
+  }
+
+  .dot-acc {
+      width: 8px;
+      height: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-slide-acc img {
+      height: 200px; 
+  }
+
+  .carousel-slide-acc p {
+      font-size: 14px; 
+  }
+
+  .dot-acc {
+      width: 6px;
+      height: 6px;
+      margin: 0 3px;
+  }
+}
+
+
+/* ----- Section Services ----- */
 
 .cardContainer {
     display: flex;

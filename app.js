@@ -18,9 +18,55 @@ menuItems.forEach(item => {
     });
 });
 
-//---- Carroussel
+/*---- Carrousel Accueil----- */
+const carouselAcc = document.querySelector('.carousel-accueil');
+const slidesAcc = document.querySelectorAll('.carousel-slide-acc');
+const dotsAcc = document.querySelectorAll('.dot-acc');
 
-// Variables de base
+let currentIndexAcc = 0;
+let totalSlidesAcc = slidesAcc.length; // Utilisation de slidesAcc ici
+
+// Fonction pour mettre à jour la position du carrousel
+function updateCarouselAcc() {
+    carouselAcc.style.transform = `translateX(-${currentIndexAcc * 100}%)`; // Utilisation de currentIndexAcc
+    updateDotsAcc();
+}
+
+// Fonction pour mettre à jour l'état des points
+function updateDotsAcc() {
+    dotsAcc.forEach((dot, index) => {
+        if (index === currentIndexAcc) { // Utilisation de currentIndexAcc
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+// Fonction pour aller au slide suivant
+function nextSlideAcc() {
+    currentIndexAcc = (currentIndexAcc + 1) % totalSlidesAcc; // Utilisation de currentIndexAcc
+    updateCarouselAcc();
+}
+
+// Fonction pour aller au slide précédent
+function prevSlideAcc() {
+    currentIndexAcc = (currentIndexAcc - 1 + totalSlidesAcc) % totalSlidesAcc; // Utilisation de currentIndexAcc
+    updateCarouselAcc();
+}
+
+// Gestion des clics sur les points
+dotsAcc.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentIndexAcc = index; // Utilisation de currentIndexAcc
+        updateCarouselAcc();
+    });
+});
+
+// Défilement automatique toutes les 3 secondes (optionnel)
+setInterval(nextSlideAcc, 3000); // Utilisation de nextSlideAcc
+
+/*---- Carrousel Pension----- */
 const carousel = document.querySelector('.carousel');
 const slides = document.querySelectorAll('.carousel-slide');
 const dots = document.querySelectorAll('.dot');
@@ -49,13 +95,13 @@ function updateDots() {
 
 // Fonction pour aller au slide suivant
 function nextSlide() {
-    currentIndex = (currentIndex + 1) % totalSlides; // Infini
+    currentIndex = (currentIndex + 1) % totalSlides;
     updateCarousel();
 }
 
 // Fonction pour aller au slide précédent
 function prevSlide() {
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // Infini
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
     updateCarousel();
 }
 
@@ -72,4 +118,4 @@ dots.forEach((dot, index) => {
 });
 
 // Défilement automatique toutes les 3 secondes (optionnel)
-//setInterval(nextSlide, 3000);
+setInterval(nextSlide, 3000);
